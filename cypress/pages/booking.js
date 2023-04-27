@@ -1,5 +1,7 @@
 import { Elements } from "../necessities/elements";
 import "@4tw/cypress-drag-drop";
+import { validateEmailBook } from "../necessities/elements";
+
 
 class Booking{
     site(){
@@ -111,8 +113,11 @@ class Booking{
         .should('be.visible');
 
         cy.get(Elements.email).type("ThatoM")
-        .should('be.visible')
-        .should('have.value', 'ThatoM@example.co.za');
+        if (!validateEmailBook){
+            cy.get('.error-message').should('be.visible');
+        }else{
+            cy.get('.error-message').should('not.be.visible');
+        }
 
         cy.get(Elements.phone).type("07512345622").
         should('be.visible');

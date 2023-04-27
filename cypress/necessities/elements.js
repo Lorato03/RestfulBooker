@@ -23,5 +23,20 @@ export const Elements = {
 
 };
 
+//validating email addresses
+export const validateEmailBook = (email) => {
+    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email);
+
+}
+
+export const validateEmailMessage = (emailMsg) => {
+    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email);
+
+}
+
+
+
 
 

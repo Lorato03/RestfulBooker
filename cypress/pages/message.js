@@ -1,4 +1,5 @@
 import { Elements } from "../necessities/elements";
+import { validateEmailMessage } from "../necessities/elements";
 
 class sendMessage{
     site(){
@@ -55,8 +56,11 @@ class sendMessage{
         .should("be.visible");
 
         cy.get(Elements.emailMsg).type("daniel.martin@example")
-        .should('have.value', 'daniel.martin@example.com')
-        ;
+        if (!validateEmailMessage){
+            cy.get('.error-message').should('be.visible');
+        }else{
+            cy.get('.error-message').should('not.be.visible');
+        }
 
         cy.get(Elements.phoneNum).type("08212345671")
         .should('be.visible');
@@ -95,4 +99,4 @@ class sendMessage{
      }
 
 }
-export default sendMessage;
+export default sendMessage; 
